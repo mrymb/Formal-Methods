@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Number of processes
+
+const int N = 2;
+
+const int c = 100;
+const int l = 4;
+
+int[0,1] flag[N];
+
+int[0,1] turn;</declaration><template><name x="5" y="5">P</name><parameter>const int[0,1] pid</parameter><declaration>//Insert local declarations of clocks, variables and constants.
+clock x;
+clock y;</declaration><location id="id0" x="128" y="64"><name x="136" y="72">try0</name><label kind="invariant" x="136" y="88">x&lt;=l</label></location><location id="id1" x="64" y="160"><name x="16" y="144">exit</name><label kind="invariant" x="8" y="160">x&lt;=l</label></location><location id="id2" x="64" y="64"><name x="-24" y="56">remainder</name></location><location id="id3" x="256" y="64"><name x="280" y="56">try1</name><label kind="invariant" x="280" y="72">x&lt;=l</label></location><location id="id4" x="256" y="256"><name x="280" y="232">try2</name><label kind="invariant" x="280" y="248">x&lt;=l</label></location><location id="id5" x="64" y="256"><name x="32" y="248">cs</name><label kind="invariant" x="0" y="264">x&lt;=c</label></location><location id="id6" x="64" y="448"><name x="16" y="440">try3</name><label kind="invariant" x="16" y="456">x&lt;=l</label></location><init ref="id2"/><transition><source ref="id0"/><target ref="id3"/><label kind="assignment" x="144" y="24">flag[pid]=true,
+x=0</label></transition><transition><source ref="id5"/><target ref="id1"/><label kind="assignment" x="24" y="200">x=0</label></transition><transition><source ref="id2"/><target ref="id0"/><label kind="assignment" x="80" y="24">x=0, 
+y=0</label></transition><transition><source ref="id3"/><target ref="id4"/><label kind="assignment" x="264" y="144">turn=1-pid,
+x=0</label></transition><transition><source ref="id4"/><target ref="id5"/><label kind="guard" x="96" y="264">flag[1-pid]==false</label><label kind="assignment" x="96" y="280">x=0</label></transition><transition><source ref="id1"/><target ref="id2"/><label kind="assignment" x="72" y="112">flag[pid]=false</label></transition><transition><source ref="id4"/><target ref="id6"/><label kind="guard" x="112" y="400">flag[1-pid]==true</label><label kind="assignment" x="112" y="416">x=0</label></transition><transition><source ref="id6"/><target ref="id5"/><label kind="guard" x="-16" y="400">turn==pid</label><label kind="assignment" x="-16" y="416">x=0</label></transition><transition><source ref="id6"/><target ref="id4"/><label kind="guard" x="88" y="456">turn==1-pid</label><label kind="assignment" x="88" y="472">x=0</label><nail x="256" y="448"/></transition></template><system>
+system P;</system></nta>
