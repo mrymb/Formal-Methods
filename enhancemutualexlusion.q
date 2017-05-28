@@ -3,9 +3,9 @@
 /*
 
 */
-A[](not( P1.CS and P2.cs))
+A[] not deadlock
 
 /*
-
+Mutex property.
 */
-A[] not deadlock
+A[]( not (P(0).cs and P(1).cs) )

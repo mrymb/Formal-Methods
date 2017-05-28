@@ -3,9 +3,9 @@
 /*
 
 */
-A[](not( P1.CS and P2.cs))
+A[] not deadlock
 
 /*
 
 */
-A[] not deadlock
+//NO_QUERY
